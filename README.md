@@ -24,6 +24,4 @@ For example, to train our model, use the following:
 python train.py --dataset citeseer
 </code></pre>
 
-```
-
 
