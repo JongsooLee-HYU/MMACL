@@ -1,0 +1,50 @@
+cora:
+  num_layers: 1
+  hid_dim: 2048
+  proj_dim: 2048
+  lr: 5.0e-04
+  weight_decay: 1.0e-05
+  drop_feature_rate: 0.4
+  drop_incidence_rate: 0.4
+  tau_n: 2.0
+  tau_g: 0.5
+  tau_m: 1.0
+  w_g: 4
+  w_m: 1
+  epochs: 700
+  batch_size_1: null
+  batch_size_2: null
+
+citeseer:
+  num_layers: 1
+  hid_dim: 2048
+  proj_dim: 2048
+  lr: 5.0e-05
+  weight_decay: 1.0e-05
+  drop_feature_rate: 0.4
+  drop_incidence_rate: 0.4
+  tau_n: 8.0
+  tau_g: 1.0
+  tau_m: 0.8
+  w_g: 4
+  w_m: 2
+  epochs: 400
+  batch_size_1: null
+  batch_size_2: null
+
+pubmed:
+  num_layers: 1
+  hid_dim: 2048
+  proj_dim: 2048
+  lr: 5.0e-04
+  weight_decay: 1.0e-05
+  drop_feature_rate: 0.1
+  drop_incidence_rate: 0.4
+  tau_n: 1.0
+  tau_g: 0.2
+  tau_m: 0.6
+  w_g: 4
+  w_m: 2
+  epochs: 1500
+  batch_size_1: null
+  batch_size_2: 4096
