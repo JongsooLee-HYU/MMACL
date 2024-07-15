@@ -7,8 +7,6 @@ cora:
   drop_feature_rate: 0.4
   drop_incidence_rate: 0.4
   tau: 2.0
-  w_g: 4
-  w_m: 1
   epochs: 700
   batch_size_1: null
   batch_size_2: null
@@ -22,8 +20,6 @@ citeseer:
   drop_feature_rate: 0.4
   drop_incidence_rate: 0.4
   tau: 8.0
-  w_g: 4
-  w_m: 2
   epochs: 400
   batch_size_1: null
   batch_size_2: null
@@ -37,8 +33,6 @@ pubmed:
   drop_feature_rate: 0.1
   drop_incidence_rate: 0.4
   tau: 1.0
-  w_g: 4
-  w_m: 2
   epochs: 1500
   batch_size_1: null
   batch_size_2: 4096
