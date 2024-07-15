@@ -6,7 +6,15 @@ problem. MMACL proposes Mixed-Attention, which blends high-order relationships d
 and pairwise relationships derived from the graph attention net-work. Then, it performs node-level contrastive learning to the graph structure with different views learned at each layer to finally obtain an expressive node representation. 
 
 # Reference
-@article{
+@inproceedings{10.1145/3626772.3657897,
+author = {Lee, Jongsoo and Chae, Dong-Kyu},
+title = {Multi-view Mixed Attention for Contrastive Learning on Hypergraphs},
+year = {2024},
+booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {2543–2547},
+numpages = {5},
+location = {Washington DC, USA},
+series = {SIGIR '24}
 }
 
 # Dependencies
