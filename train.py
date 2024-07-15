@@ -31,7 +31,7 @@ def train(num_negs):
     # Encoder
     n_h, n_g = model(features, hyperedge_index, num_nodes, num_edges)
     n_h, n_g = model.node_projection(n_h), model.node_projection(n_g)
-    loss_n = model.node_level_loss(n_h, n_g, params['tau_n'], batch_size=params['batch_size_1'], num_negs=num_negs)
+    loss_n = model.node_level_loss(n_h, n_g, params['tau'], batch_size=params['batch_size_1'], num_negs=num_negs)
 
     loss = loss_n
     loss.backward()
