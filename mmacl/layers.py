@@ -79,8 +79,6 @@ class ProposedConv(nn.Module):
         self.attention1 = ScaledDotProductAttention_hyper(temperature=self.out_features ** 0.5, attn_dropout = self.dropout)
         self.attention2 = ScaledDotProductAttention_hyper(temperature=self.out_features ** 0.5, attn_dropout = self.dropout)
 
-        self.leakyrelu = nn.LeakyReLU(self.alpha)
-
         if bias:
             self.bias = Parameter(torch.Tensor(self.out_features))
         else:
