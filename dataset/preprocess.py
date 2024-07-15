@@ -97,78 +97,6 @@ def preprocess_hypergcn_dataset(type, name):
         masks = generate_random_split(num_nodes, 0.1, 0.1, seed=i)
         save_masks(type, name, i, masks)
     print(f'Finish preprocess hypergcn dataset: {type}, {name}')
-
-
-def preprocess_other_dataset(name):
-    file_name = f'{name}.content'
-    p2idx_features_labels = osp.join('dataset', name, file_name)
-    idx_features_labels = np.genfromtxt(p2idx_features_labels,
-                                        dtype=np.dtype(str))
-    features = sp.csr_matrix(idx_features_labels[:, 1:-1], dtype=np.float32)
-    labels = torch.LongTensor(idx_features_labels[:, -1].astype(float))
-
-    # build graph
-    idx = np.array(idx_features_labels[:, 0], dtype=np.int32)
-    idx_map = {j: i for i, j in enumerate(idx)}
-    
-    file_name = f'{name}.edges'
-    p2edges_unordered = osp.join('dataset', name, file_name)
-    edges_unordered = np.genfromtxt(p2edges_unordered,
-                                    dtype=np.int32)
-    
-    edges = np.array(list(map(idx_map.get, edges_unordered.flatten())),
-                     dtype=np.int32).reshape(edges_unordered.shape)
-    edge_index = edges.T 
-    assert edge_index[0].max() == edge_index[1].min() - 1
-
-    assert len(np.unique(edge_index)) == edge_index.max() + 1
-    
-    num_nodes = edge_index[0].max() + 1
-
-    ############################################################################
-    features = features[:num_nodes]
-    labels = labels[:num_nodes]
-    
-    if name in ['zoo', 'ModelNet40']:
-        labels -= 1
-
-    edge_set = set(edge_index[1])
-    node_set = set()
-    for edge in edge_set:
-        nodes = edge_index[0, edge_index[1] == edge].tolist()
-        node_set.update(nodes)
-        
-    node_idx = list(node_set)
-    node_to_num = {}
-    num = 0
-    for node in node_set:
-        node_to_num[node] = num
-        num += 1
-
-    for edge in edge_set:
-        nodes = edge_index[0, edge_index[1] == edge].tolist()
-        new_nodes = []
-        for node in nodes:
-            new_nodes.append(node_to_num[node])
-        edge_index[0, edge_index[1] == edge] = new_nodes
-    
-    features = features[node_idx] 
-    labels = labels[node_idx].tolist()
-    hyperedge_index = edge_index
-    hyperedge_index[1] -= num_nodes
-
-    hypergraph = {}
-    for edge in edge_set:
-        nodes = edge_index[0, edge_index[1] == (edge - num_nodes)].tolist()
-        hypergraph[edge - num_nodes] = nodes
-
-    save_preprocessed_dataset('etc', name, features, hypergraph, labels)
-
-    num_nodes = features.shape[0]
-    for i in range(20):
-        masks = generate_random_split(num_nodes, 0.1, 0.1, seed=i)
-        save_masks('etc', name, i, masks)
-    print(f'Finish preprocess other dataset: {name}')
     
 
 if __name__ == "__main__":
@@ -177,9 +105,3 @@ if __name__ == "__main__":
     preprocess_hypergcn_dataset('cocitation', 'cora')
     preprocess_hypergcn_dataset('cocitation', 'citeseer')
     preprocess_hypergcn_dataset('cocitation', 'pubmed')
-
-    preprocess_other_dataset('zoo')
-    preprocess_other_dataset('20newsW100')
-    preprocess_other_dataset('Mushroom')
-    preprocess_other_dataset('NTU2012')
-    preprocess_other_dataset('ModelNet40')
