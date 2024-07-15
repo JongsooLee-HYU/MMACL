@@ -6,9 +6,7 @@ cora:
   weight_decay: 1.0e-05
   drop_feature_rate: 0.4
   drop_incidence_rate: 0.4
-  tau_n: 2.0
-  tau_g: 0.5
-  tau_m: 1.0
+  tau: 2.0
   w_g: 4
   w_m: 1
   epochs: 700
@@ -23,9 +21,7 @@ citeseer:
   weight_decay: 1.0e-05
   drop_feature_rate: 0.4
   drop_incidence_rate: 0.4
-  tau_n: 8.0
-  tau_g: 1.0
-  tau_m: 0.8
+  tau: 8.0
   w_g: 4
   w_m: 2
   epochs: 400
@@ -40,9 +36,7 @@ pubmed:
   weight_decay: 1.0e-05
   drop_feature_rate: 0.1
   drop_incidence_rate: 0.4
-  tau_n: 1.0
-  tau_g: 0.2
-  tau_m: 0.6
+  tau: 1.0
   w_g: 4
   w_m: 2
   epochs: 1500
