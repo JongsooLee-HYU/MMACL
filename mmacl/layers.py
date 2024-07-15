@@ -79,13 +79,6 @@ class ProposedConv(nn.Module):
         self.attention1 = ScaledDotProductAttention_hyper(temperature=self.out_features ** 0.5, attn_dropout = self.dropout)
         self.attention2 = ScaledDotProductAttention_hyper(temperature=self.out_features ** 0.5, attn_dropout = self.dropout)
 
-        self.lin = Linear(in_dim,in_dim , bias=False, weight_initializer='glorot')
-        self.lin2 = Linear(in_dim,in_dim , bias=False, weight_initializer='glorot')
-        self.lin_he2g = Linear(4374, 1458 , bias=False, weight_initializer='glorot')
-        self.lin_hg2g = Linear(in_dim,in_dim , bias=False, weight_initializer='glorot')
-        self.lin_g2hg = Linear(in_dim,in_dim , bias=False, weight_initializer='glorot')
-        self.lin_g2he = Linear(in_dim,in_dim , bias=False, weight_initializer='glorot')
-
         self.leakyrelu = nn.LeakyReLU(self.alpha)
 
         if bias:
@@ -104,13 +97,6 @@ class ProposedConv(nn.Module):
         self.weight3.data.uniform_(-stdv, stdv)
         self.weight_g.data.uniform_(-stdv, stdv)
         self.a_g.data.uniform_(-stdv, stdv)
-        self.lin.reset_parameters()
-        self.lin2.reset_parameters()
-        self.lin_he2g.reset_parameters()
-        self.lin_hg2g.reset_parameters()
-        self.lin_g2hg.reset_parameters()
-        self.lin_g2he.reset_parameters()
-        # self.lin_e2n.reset_parameters()
         if self.bias is not None:
             self.bias.data.uniform_(-stdv, stdv)
         nn.init.uniform_(self.word_context.weight.data, -stdv, stdv)
