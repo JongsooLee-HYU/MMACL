@@ -4,8 +4,6 @@ cora:
   proj_dim: 2048
   lr: 5.0e-04
   weight_decay: 1.0e-05
-  drop_feature_rate: 0.4
-  drop_incidence_rate: 0.4
   tau: 2.0
   epochs: 700
   batch_size_1: null
@@ -17,8 +15,6 @@ citeseer:
   proj_dim: 2048
   lr: 5.0e-05
   weight_decay: 1.0e-05
-  drop_feature_rate: 0.4
-  drop_incidence_rate: 0.4
   tau: 8.0
   epochs: 400
   batch_size_1: null
@@ -30,8 +26,6 @@ pubmed:
   proj_dim: 2048
   lr: 5.0e-04
   weight_decay: 1.0e-05
-  drop_feature_rate: 0.1
-  drop_incidence_rate: 0.4
   tau: 1.0
   epochs: 1500
   batch_size_1: null
