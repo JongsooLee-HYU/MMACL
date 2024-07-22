@@ -15,7 +15,7 @@ citeseer:
   proj_dim: 2048
   lr: 5.0e-05
   weight_decay: 1.0e-05
-  tau: 8.0
+  tau: 9.0
   epochs: 400
   batch_size_1: null
   batch_size_2: null
