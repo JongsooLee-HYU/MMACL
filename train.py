@@ -65,8 +65,6 @@ if __name__ == '__main__':
     parser.add_argument('--num_seeds', type=int, default=5)
     parser.add_argument('--device', type=int, default=0)
     parser.add_argument('--alpha', type=float, default=0.2)
-    parser.add_argument('--hid_dim', type=int, default=1024)
-    parser.add_argument('--proj_dim', type=int, default=1024)
     args = parser.parse_args()
 
     params = yaml.safe_load(open('config.yaml'))[args.dataset]
