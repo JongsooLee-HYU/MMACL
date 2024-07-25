@@ -102,7 +102,6 @@ class ProposedConv(nn.Module):
     
     def forward(self, x: Tensor, hyperedge_index: Tensor, 
                 num_nodes: Optional[int] = None, num_edges: Optional[int] = None):
-        residual = x
         if num_nodes is None:
             num_nodes = x.shape[0]
         if num_edges is None and hyperedge_index.numel() > 0:
